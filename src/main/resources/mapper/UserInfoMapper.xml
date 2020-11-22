@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kalo.easpay.domain.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.kalo.easpay.domain.entity.UserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="is_auth" jdbcType="INTEGER" property="isAuth" />
+    <result column="is_usable" jdbcType="INTEGER" property="isUsable" />
+    <result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

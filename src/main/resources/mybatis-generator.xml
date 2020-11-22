@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MyCustom" targetRuntime="MyBatis3">
+        <!-- 配置实体类实现序列化插件 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!-- 自定义生成 -->
+        <commentGenerator type="com.kalo.easpay.utils.generator.mybatis.CustomGenerator">
+            <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+            <property name="autoDelimitKeywords" value="false"/>
+            <!-- 格式化java代码 -->
+            <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+            <!-- 格式化XML代码 -->
+            <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 链接 mysql 数据库驱动 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/easpay?characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="root"/>
+        <!-- 指定生成实体类 -->
+        <javaModelGenerator targetPackage="com.kalo.easpay.domain.entity" targetProject="E:/WorkSpace/easpay/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 指定生成映射xml-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="E:/WorkSpace/easpay/src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="javaFileEncoding" value="UTF-8"/>
+        </sqlMapGenerator>
+        <!-- 指定生成dao层-->
+        <javaClientGenerator targetPackage="com.kalo.easpay.domain.mapper" targetProject="E:/WorkSpace/easpay/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+            <property name="javaFileEncoding" value="UTF-8"/>
+        </javaClientGenerator>
+        <!-- 生成表相关设置 -->
+        <table tableName="tab_user_auth_info" domainObjectName="UserAuthInfo" mapperName="UserAuthInfoMapper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               enableDeleteByPrimaryKey="false" enableInsert="false"
+               enableUpdateByPrimaryKey="false" selectByExampleQueryId="false">
+            <!-- 下列配置打开 则生成与数据库完全一致的属性 默认生成驼峰 -->
+            <!--<property name="useActualColumnNames" value="true" />-->
+        </table>
+    </context>
+</generatorConfiguration>

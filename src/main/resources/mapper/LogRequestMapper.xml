@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kalo.easpay.domain.mapper.LogRequestMapper">
+  <resultMap id="BaseResultMap" type="com.kalo.easpay.domain.entity.LogRequest">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="client_ip" jdbcType="VARCHAR" property="clientIp" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="method_name" jdbcType="VARCHAR" property="methodName" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="transfer_mode" jdbcType="VARCHAR" property="transferMode" />
+    <result column="err_code" jdbcType="INTEGER" property="errCode" />
+    <result column="err_msg" jdbcType="VARCHAR" property="errMsg" />
+    <result column="params" jdbcType="LONGVARCHAR" property="params" />
+    <result column="result" jdbcType="LONGVARCHAR" property="result" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+</mapper>
