@@ -31,22 +31,22 @@ public class LoginServiceImpl implements LoginService {
     /**
      * 微信开发者APPID
      */
-    @Value("${wechat.AppID}")
+    @Value("${wechat.pub.plat.AppID}")
     private String APPID;
     /**
      * 微信开发者AppSecret
      */
-    @Value("${wechat.AppSecret}")
+    @Value("${wechat.pub.plat.AppSecret}")
     private String AppSecret;
     /**
      * 微信授权登录获取code URL
      */
-    @Value("${wechat.authorize.authCodeURL}")
+    @Value("${wechat.pub.plat.authorize.authCodeURL}")
     private String authCodeURL;
     /**
      * 微信授权登录回调获取信息URL
      */
-    @Value("${wechat.authorize.weChatAuthCallBackURL}")
+    @Value("${wechat.pub.plat.authorize.weChatAuthCallBackURL}")
     private String weChatAuthCallBackURL;
 
 

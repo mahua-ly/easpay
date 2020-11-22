@@ -42,23 +42,23 @@ public class HomeController {
     /**
      * 微信开发者APPID
      */
-    @Value("${wechat.AppID}")
+    @Value("${wechat.pub.plat.AppID}")
     private String APPID;
     /**
      * 微信开发者AppSecret
      */
-    @Value("${wechat.AppSecret}")
+    @Value("${wechat.pub.plat.AppSecret}")
     private String AppSecret;
 
     /**
      * 网页授权 AccessToken 请求URL
      */
-    @Value("${wechat.authorize.getAccessTokenURL}")
+    @Value("${wechat.pub.plat.authorize.getAccessTokenURL}")
     private String getAccessTokenURL;
     /**
      * 拉取用户微信信息URL
      */
-    @Value("${wechat.authorize.snsUserinfoURL}")
+    @Value("${wechat.pub.plat.authorize.snsUserinfoURL}")
     private String snsUserinfoURL;
 
     private final CommonService commonService;
