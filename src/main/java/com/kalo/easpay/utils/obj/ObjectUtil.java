@@ -64,9 +64,9 @@ public class ObjectUtil {
      * @Description      TODO  判断对象是否为空
      */
     public static boolean isBlank(Object obj) {
-        if (obj == null || obj.equals("undefined")) {
+        if (obj == null || "undefined".equals(obj)) {
             return true;
-        } else if (obj instanceof String && (obj.equals(""))) {
+        } else if (obj instanceof String && ("".equals(obj))) {
             return true;
         } else if (obj instanceof Collection && ((Collection<?>) obj).size() == 0) {
             return true;

@@ -165,7 +165,7 @@ public class RequestUtil {
         String ipAddress = request.getHeader("x-forwarded-for");
         if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
             ipAddress = request.getRemoteAddr();
-            if (ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
+            if ("127.0.0.1".equals(ipAddress) || "0:0:0:0:0:0:0:1".equals(ipAddress)) {
                 //根据网卡取本机配置的IP
                 ipAddress = InetAddress.getLocalHost().getHostAddress();
             }
@@ -222,7 +222,7 @@ public class RequestUtil {
      */
     public static boolean isAjaxRequest(HttpServletRequest request) {
         String requestType = request.getHeader("X-Requested-With");
-        return requestType != null && requestType.equals("XMLHttpRequest");
+        return requestType != null && "XMLHttpRequest".equals(requestType);
     }
 
 }
