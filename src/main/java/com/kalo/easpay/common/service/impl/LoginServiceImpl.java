@@ -1,5 +1,6 @@
 package com.kalo.easpay.common.service.impl;
 
+import com.kalo.easpay.common.conf.WeChatConfig;
 import com.kalo.easpay.common.enums.LoginWayEnum;
 import com.kalo.easpay.common.enums.ResultCode;
 import com.kalo.easpay.common.result.ResponseResult;
@@ -28,33 +29,13 @@ import java.io.IOException;
 @RefreshScope
 public class LoginServiceImpl implements LoginService {
 
-    /**
-     * 微信开发者APPID
-     */
-    @Value("${wechat.pub.plat.AppID}")
-    private String APPID;
-    /**
-     * 微信开发者AppSecret
-     */
-    @Value("${wechat.pub.plat.AppSecret}")
-    private String AppSecret;
-    /**
-     * 微信授权登录获取code URL
-     */
-    @Value("${wechat.pub.plat.authorize.authCodeURL}")
-    private String authCodeURL;
-    /**
-     * 微信授权登录回调获取信息URL
-     */
-    @Value("${wechat.pub.plat.authorize.weChatAuthCallBackURL}")
-    private String weChatAuthCallBackURL;
-
-
     private final UserInfoService userInfoService;
+    private final WeChatConfig weChatConfig;
 
     @Autowired
-    public LoginServiceImpl(UserInfoService userInfoService) {
+    public LoginServiceImpl(UserInfoService userInfoService, WeChatConfig weChatConfig) {
         this.userInfoService = userInfoService;
+        this.weChatConfig = weChatConfig;
     }
 
     /**
@@ -78,7 +59,7 @@ public class LoginServiceImpl implements LoginService {
             //微信授权登录
             if (LoginWayEnum.WX_CHAT.getType().equals(request.getType())) {
                 //第一步：引导用户进入授权页面同意授权，获取code  授权页面地址
-                String url = authCodeURL.replace("APPID", APPID).replace("REDIRECT_URI", RequestUtil.URLEncode(weChatAuthCallBackURL));
+                String url = weChatConfig.getAuthCodeUrl().replace("APPID", weChatConfig.getAppId()).replace("REDIRECT_URI", RequestUtil.URLEncode(weChatConfig.getWeChatAuthCallBackUrl()));
                 log.warn("授权重定向[authCodeURL]：{}",url);
                 try {
                     //重定向到授权页面

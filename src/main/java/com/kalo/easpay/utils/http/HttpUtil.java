@@ -18,6 +18,22 @@ import java.io.IOException;
  */
 @Slf4j
 public class HttpUtil {
+    /**
+     * 是否https
+     * @param url
+     * @return  boolean
+     */
+    public static boolean isHttps(String url) {
+        return url.toLowerCase().startsWith("https");
+    }
+    /**
+     * 是否http
+     * @param url
+     * @return  boolean
+     */
+    public static boolean isHttp(String url) {
+        return url.toLowerCase().startsWith("http");
+    }
 
 
     public static String doGetAuth(String url) {
