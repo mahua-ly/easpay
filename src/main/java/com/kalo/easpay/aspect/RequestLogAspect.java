@@ -2,7 +2,6 @@ package com.kalo.easpay.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
-import com.kalo.easpay.common.constant.Package;
 import com.kalo.easpay.service.LogRequestService;
 import com.kalo.easpay.utils.http.RequestUtil;
 import com.kalo.easpay.utils.obj.ObjectUtil;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,12 +46,12 @@ public class RequestLogAspect {
     public void controllerLog() {}
 
     /**
-     * TODO     AOP日志切面：环绕
-     * @Title   around
+     * TODO
+     * @title   around
      * @author  Panguaxe 
-     * @param joinPoint
-     * @return  java.lang.Object 
-     * @date    2020/11/21 21:57
+     * @param joinPoint 切入点
+     * @return  java.lang.Object
+     * @date    2020/11/26 0:17
      */
     @Around("controllerLog()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -74,7 +74,7 @@ public class RequestLogAspect {
                         || params instanceof HttpServletResponse
                         || params instanceof BeanPropertyBindingResult
                         || params instanceof PageInfo
-                        || params.getClass().getName().startsWith(Package.MULTIPART_PARAMS))) {
+                        || params instanceof MultipartFile)) {
                     log.info("请求参数[Request Args] : {}", JSON.toJSONString(params));
                     Params = JSON.toJSONString(params);
                 }

@@ -1,5 +1,4 @@
 server.port=8088
-spring.application.name=easpay
 #Set up unified character set
 spring.http.encoding.charset=UTF8
 #404 error returned directly

@@ -5,7 +5,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class HttpUtil {
 
     public static String doGetAuth(String url) {
         String response = "";
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         try {
             HttpResponse httpResponse = client.execute(httpGet);

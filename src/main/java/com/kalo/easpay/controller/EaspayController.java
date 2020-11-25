@@ -5,17 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author Panguaxe
- * @Version V1.0.0
- * @Description TODO
- * @DateTime 2020年 11月 22日 星期日 15:57:17
+ * @author Panguaxe
+ * @version 1.0.0
+ * @date 2020年 11月 25日 星期三 22:20:05
  */
 @CrossOrigin
 @RestController
-public class WeChatController {
+public class EaspayController {
 
     @RequestMapping({"MP_verify_rP7ufkI7M6jA0luU.txt"})
-    private String returnConfigFile() {
+    private String weChatConfig() {
         return "rP7ufkI7M6jA0luU";
     }
 }
