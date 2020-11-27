@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kalo.easpay.domain.mapper.BaseAreaInfoMapper">
+  <resultMap id="BaseResultMap" type="com.kalo.easpay.domain.entity.BaseAreaInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="area_id" jdbcType="BIGINT" property="areaId" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="level_en" jdbcType="VARCHAR" property="levelEn" />
+    <result column="area_no" jdbcType="VARCHAR" property="areaNo" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="is_usable" jdbcType="INTEGER" property="isUsable" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
