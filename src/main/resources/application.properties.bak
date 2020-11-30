@@ -72,3 +72,7 @@ wechat.pub.plat.authorize.weChatAuthCallBackURL=https://easpay.utools.club/app/a
 wechat.pub.plat.authorize.getAccessTokenURL=https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
 #Wechat website authorization,Pull user information URL
 wechat.pub.plat.authorize.snsUserinfoURL=https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
+#############################################################AMAP#####################################################
+amap.api.key=0accebfe92614451fceb5f261a3365e3
+#行政区域查询
+amap.api.district.url=https://restapi.amap.com/v3/config/district?parameters
