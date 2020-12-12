@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kalo.easpay.domain.mapper.BaseAreaInfoMapper">
   <resultMap id="BaseResultMap" type="com.kalo.easpay.domain.entity.BaseAreaInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="area_id" jdbcType="BIGINT" property="areaId" />
     <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
     <result column="area_name" jdbcType="VARCHAR" property="areaName" />

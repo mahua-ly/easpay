@@ -17,7 +17,9 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author Panguaxe
@@ -61,6 +63,7 @@ public class BaseAreaInfoServiceImpl implements BaseAreaInfoService {
             }
             //2.获取下级行政区划
             List<DistrictsDTO> districts2 = firstFloorDistricts.getDistricts();
+            districts2 = districts2.stream().sorted(Comparator.comparing(DistrictsDTO::getAdcode)).collect(Collectors.toList());
             if (districts2.size() > 0) {
                 for (DistrictsDTO twoFloorDistricts : districts2) {
                     String twoCode = twoFloorDistricts.getAdcode();
@@ -70,6 +73,7 @@ public class BaseAreaInfoServiceImpl implements BaseAreaInfoService {
                     }
                     //3.获取下级行政区划
                     List<DistrictsDTO> districts3 = twoFloorDistricts.getDistricts();
+                    districts3 = districts3.stream().sorted(Comparator.comparing(DistrictsDTO::getAdcode)).collect(Collectors.toList());
                     if (districts3.size() > 0) {
                         for (DistrictsDTO threeFloorDistricts : districts3) {
                             String threeCode = threeFloorDistricts.getAdcode();
@@ -79,6 +83,7 @@ public class BaseAreaInfoServiceImpl implements BaseAreaInfoService {
                             }
                             //3.获取下级行政区划
                             List<DistrictsDTO> districts4 = threeFloorDistricts.getDistricts();
+                            districts4 = districts4.stream().sorted(Comparator.comparing(DistrictsDTO::getAdcode)).collect(Collectors.toList());
                             if (districts4.size() > 0){
                                 for (DistrictsDTO fourFloorDistricts : districts4) {
                                     saveDistricts(new BaseAreaInfo(),fourFloorDistricts.getAdcode(),fourFloorDistricts.getName(),fourFloorDistricts.getLevel(),fourFloorDistricts.getCitycode(),fourFloorDistricts.getCenter(),threeCode);

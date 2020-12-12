@@ -29,18 +29,12 @@ import java.util.Date;
 @Table(name = "tab_base_area_info")
 @Alias("高德基础地区表")
 public class BaseAreaInfo implements Serializable {
-    /**
-     * ID
-	* 列名:id;类型:INTEGER(10);允许空:false;缺省值:null
-    */
-    @Id
-    @Column(name = "id")
-    private Integer id;
 
     /**
      * 地区唯一ID
 	* 列名:area_id;类型:BIGINT(19);允许空:true;缺省值:null
     */
+    @Id
     @KeySql(genId = SnowFlakeGenId.class)
     @Column(name = "area_id")
     private Long areaId;
@@ -133,22 +127,6 @@ public class BaseAreaInfo implements Serializable {
      * tab_base_area_info
      */
     private static final long serialVersionUID = 1L;
-
-    /**
-
-     * @return id ID
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * ID
-     * @param id ID
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     /**
 

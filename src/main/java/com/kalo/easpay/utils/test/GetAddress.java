@@ -123,7 +123,7 @@ public class GetAddress {
     /**
      * TODO     获取市
      * @title   indexCity
-     * @author  Panguaxe 
+     * @author  Panguaxe
      * @param url
      * @return  java.util.List<com.kalo.easpay.utils.test.City>
      * @date    2020/11/26 22:30
@@ -341,7 +341,7 @@ public class GetAddress {
     /**
      * TODO     重载方法
      * @title   heavyLoadIn
-     * @author  Panguaxe 
+     * @author  Panguaxe
      * @param url
      * @return  org.jsoup.nodes.Document
      * @date    2020/11/26 22:39
@@ -359,7 +359,7 @@ public class GetAddress {
     /**
      * TODO     有损转换 【GBK 转换 UTF8】
      * @title   gbkConvertToUTF
-     * @author  Panguaxe 
+     * @author  Panguaxe
      * @param gbkStr
      * @return  java.lang.String
      * @date    2020/11/26 22:41

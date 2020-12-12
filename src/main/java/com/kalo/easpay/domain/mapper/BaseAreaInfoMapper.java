@@ -8,9 +8,9 @@ package com.kalo.easpay.domain.mapper;
 
 import com.kalo.easpay.common.base.BaseMapper;
 import com.kalo.easpay.domain.entity.BaseAreaInfo;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
-@Mapper
+@Component
 public interface BaseAreaInfoMapper extends BaseMapper<BaseAreaInfo> {
 
 }
