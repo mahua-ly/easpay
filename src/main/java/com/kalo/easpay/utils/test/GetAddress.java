@@ -1,6 +1,5 @@
 package com.kalo.easpay.utils.test;
 
-import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -28,58 +28,58 @@ public class GetAddress {
     private static final String baseUrl = "http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2020/index.html";
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        List<RegionTable> preservation = preservation(baseUrl);
-        log.info("处理结果：{}", JSON.toJSONString(preservation));
+//        List<RegionTable> preservation = preservation(baseUrl);
+//        log.info("处理结果：{}", JSON.toJSONString(preservation));
     }
 
 
-    public static List<RegionTable> preservation(String url) throws IOException, InterruptedException {
-        List<RegionTable> nations = new ArrayList<>();
-        //获取：省、市、区县、乡镇/街道、村级
-        List<Province> province = getProvince(url);
-        RegionTable nation;
-        for (Province province1 : province) {
-            nation = new RegionTable();
-            nation.setCode(province1.getCode());
-            nation.setName(province1.getName());
-            nation.setType("A");
-            nations.add(nation);
-            List<City> cities = province1.getCities();
-            for (City city : cities) {
-                nation = new RegionTable();
-                nation.setCode(city.getCode());
-                nation.setName(city.getName());
-                nation.setType("B");
-                nations.add(nation);
-                List<County> counties = city.getCounties();
-                for (County county : counties) {
-                    nation = new RegionTable();
-                    nation.setCode(county.getCode());
-                    nation.setName(county.getName());
-                    nation.setType("C");
-                    nations.add(nation);
-                    List<Country> countries = county.getCountries();
-                    for (Country country : countries) {
-                        nation = new RegionTable();
-                        nation.setCode(country.getCode());
-                        nation.setName(country.getName());
-                        nation.setType("D");
-                        nations.add(nation);
-                        List<Town> towns = country.getTowns();
-                        for (Town town : towns) {
-                            nation = new RegionTable();
-                            nation.setCode(town.getCode());
-                            nation.setName(town.getName());
-                            nation.setClassification(town.getClassification());
-                            nation.setType("E");
-                            nations.add(nation);
-                        }
-                    }
-                }
-            }
-        }
-        return nations;
-    }
+//    public static List<RegionTable> preservation(String url) throws IOException, InterruptedException {
+//        List<RegionTable> nations = new ArrayList<>();
+//        //获取：省、市、区县、乡镇/街道、村级
+//        List<Province> province = getProvince(url);
+//        RegionTable nation;
+//        for (Province province1 : province) {
+//            nation = new RegionTable();
+//            nation.setCode(province1.getCode());
+//            nation.setName(province1.getName());
+//            nation.setType("A");
+//            nations.add(nation);
+//            List<City> cities = province1.getCities();
+//            for (City city : cities) {
+//                nation = new RegionTable();
+//                nation.setCode(city.getCode());
+//                nation.setName(city.getName());
+//                nation.setType("B");
+//                nations.add(nation);
+//                List<County> counties = city.getCounties();
+//                for (County county : counties) {
+//                    nation = new RegionTable();
+//                    nation.setCode(county.getCode());
+//                    nation.setName(county.getName());
+//                    nation.setType("C");
+//                    nations.add(nation);
+//                    List<Country> countries = county.getCountries();
+//                    for (Country country : countries) {
+//                        nation = new RegionTable();
+//                        nation.setCode(country.getCode());
+//                        nation.setName(country.getName());
+//                        nation.setType("D");
+//                        nations.add(nation);
+////                        List<Town> towns = country.getTowns();
+////                        for (Town town : towns) {
+////                            nation = new RegionTable();
+////                            nation.setCode(town.getCode());
+////                            nation.setName(town.getName());
+////                            nation.setClassification(town.getClassification());
+////                            nation.setType("E");
+////                            nations.add(nation);
+////                        }
+//                    }
+//                }
+//            }
+//        }
+//        return nations;
+//    }
 
     /**
      * TODO     获取省信息
@@ -89,7 +89,7 @@ public class GetAddress {
      * @return  java.util.List<com.kalo.easpay.utils.test.Province>
      * @date    2020/11/26 22:12
      */
-    private static List<Province> getProvince(final String url) throws InterruptedException, IOException {
+    public static List<Province> getProvince(final String url,String startsWith) throws InterruptedException, IOException {
         List<Province> provinces = new ArrayList<>();
         //省
         Elements elements = getElements(url, 1);
@@ -101,7 +101,7 @@ public class GetAddress {
                 //调用转换方法
                 href = gbkConvertToUTF(href);
                 String code = href.substring(0, href.lastIndexOf('.'));
-                if (code.startsWith("11")){//TODO
+                if (code.startsWith(startsWith)){//TODO
                     //获取省name
                     String name = tag.text();
                     //调用转换方法
@@ -217,8 +217,8 @@ public class GetAddress {
                 country1.setName(name);
 
                 //获取村
-                List<Town> towns = indexTown(towntr.absUrl("href"));
-                country1.setTowns(towns);
+//                List<Town> towns = indexTown(towntr.absUrl("href"));
+//                country1.setTowns(towns);
 
                 countries.add(country1);
             }
